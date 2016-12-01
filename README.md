@@ -1,5 +1,6 @@
 # WooCommerce - Product QA for WooCommerce #
 
+[![Build Status](https://api.travis-ci.org/vishalkakadiya/product-qa-for-woocommerce.svg?branch=master)](https://travis-ci.org/vishalkakadiya/product-qa-for-woocommerce)
 [![Scrutinizer Build](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/badges/build.png?b=master)](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/)
 [![Scrutinizer Build](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/)
 
