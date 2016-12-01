@@ -1,0 +1,22 @@
+{
+  "name": "product-qa-for-woocommerce",
+  "version": "1.0.0",
+  "description": "[![Scrutinizer Build](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/badges/build.png?b=master)](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/) [![Scrutinizer Build](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vishalkakadiya/product-qa-for-woocommerce/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishalkakadiya/Product-QA-for-Woocommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishalkakadiya/Product-QA-for-Woocommerce/issues"
+  },
+  "homepage": "https://github.com/vishalkakadiya/Product-QA-for-Woocommerce#readme",
+  "devDependencies": {
+    "eslint": "^3.11.1"
+  }
+}
