@@ -24,6 +24,8 @@ Admin can add/edit/delete/approve all questions and answers.
 
 2. Unzip it and upload it to the plugins folder of your WordPress installation (wp-content/plugins/ directory of your WordPress installation).
 
+
+
 4. Activate it through the 'Plugins' section.
 
 5. Now Here we go. Installation is Complete.
