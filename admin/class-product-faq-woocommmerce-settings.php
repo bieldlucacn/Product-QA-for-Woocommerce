@@ -69,7 +69,7 @@ class Product_Faq_For_Woocommmerce_Settings {
 		 * Check the current section is what we want.
 		 *
 		 */
-		if ( 'product_faq' === $current_section ) {
+		if ( 'product_faq' === $current_section ) :
 
 			$settings = array();
 
@@ -78,7 +78,7 @@ class Product_Faq_For_Woocommmerce_Settings {
 				'receive_quotation' => __( 'Category Wise Discount', 'product-faq-for-wc' ),
 				'type' => 'title',
 				'desc' => __( '<h3>Settings<h3>', 'product-faq-for-wc' ),
-				'id' => 'product_quotation'
+				'id' => 'product_quotation',
 			);
 
 			$settings[] = array(
@@ -94,7 +94,7 @@ class Product_Faq_For_Woocommmerce_Settings {
 			$terms = get_terms( array(
 				'taxonomy' => 'product_cat',
 				'hide_empty' => false,
-				'fields' => 'id=>name'
+				'fields' => 'id=>name',
 			) );
 
 			// Multi select
@@ -116,7 +116,7 @@ class Product_Faq_For_Woocommmerce_Settings {
 				'desc' => __( 'Add sender email, by that email all commnunication works.', 'product-faq-for-wc' ),
 				'id' => 'wc_product_faq_sender_email',
 				'type' => 'text',
-				'css' => 'min-width:300px;'
+				'css' => 'min-width:300px;',
 			);
 
 			$settings[] = array(
@@ -124,7 +124,7 @@ class Product_Faq_For_Woocommmerce_Settings {
 				'desc' => __( 'Add logo url which you want to add in email', 'product-faq-for-wc' ),
 				'id' => 'wc_product_faq_email_logo',
 				'css' => 'width:50%;',
-				'type' => 'text'
+				'type' => 'text',
 			);
 
 			/* Question email's settings */
@@ -133,29 +133,29 @@ class Product_Faq_For_Woocommmerce_Settings {
 				'desc' => __( 'Title which visible on top of question email.', 'product-faq-for-wc' ),
 				'id' => 'wc_product_faq_question_title',
 				'type' => 'text',
-				'css' => 'min-width:300px;'
+				'css' => 'min-width:300px;',
 			);
 			$settings[] = array(
 				'name' => __( 'Question email\'s subject', 'product-faq-for-wc' ),
 				'desc' => __( 'Subject which visible on top of question email.', 'product-faq-for-wc' ),
 				'id' => 'wc_product_faq_question_subject',
 				'type' => 'text',
-				'css' => 'min-width:300px;'
+				'css' => 'min-width:300px;',
 			);
 			$settings[] = array(
 				'name' => __( 'Question email\'s button text', 'product-faq-for-wc' ),
 				'desc' => __( 'Subject which visible on top of question email.', 'product-faq-for-wc' ),
 				'id' => 'wc_product_faq_question_button_text',
 				'type' => 'text',
-				'css' => 'min-width:300px;'
+				'css' => 'min-width:300px;',
 			);
 
 			$settings[] = array(
 				'type' => 'sectionend',
-				'id' => 'product_quotation'
+				'id' => 'product_quotation',
 			);
 
-		}
+		endif;
 
 		return $settings;
 	}
