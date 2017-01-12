@@ -13,7 +13,7 @@
  */
 ?>
 
-<h2><?php _e( 'Question Answers', 'product-faq-for-wc' );?></h2>
+<h2><?php esc_attr_e( 'Question Answers', 'product-faq-for-wc' );?></h2>
 
 <?php
 
@@ -31,15 +31,15 @@ if ( is_user_logged_in() ) {
 // Question Query
 $question_query = new WP_Query( array(
 	'post_type'		=> 'wc_product_faq',
-	'post_parent'	=> $product->id
+	'post_parent'	=> $product->id,
 ) );
 
 
-if ( $question_query->have_posts() ) {
+if ( $question_query->have_posts() ) :
 
 ?>
 	<ul class="wc-faq-questions">
-		<?php while ( $question_query->have_posts() ) {
+		<?php while ( $question_query->have_posts() ) :
 			$question_query->the_post();
 			$question_id = get_the_ID(); ?>
 
@@ -48,53 +48,53 @@ if ( $question_query->have_posts() ) {
 					<span class="question-symbol">Q</span>
 					<?php the_title(); ?>
 					<?php if ( $brought ) { ?>
-						<a data-id="<?php echo $question_id; ?>" class="answer-button">
-							<?php _e( 'Answer Now', 'product-faq-for-wc' ); ?>
+						<a data-id="<?php echo esc_attr( $question_id ); ?>" class="answer-button">
+							<?php esc_attr_e( 'Answer Now', 'product-faq-for-wc' ); ?>
 						</a>
-						<div id="<?php echo 'question-' . $question_id; ?>" class="answer-slide">
+						<div id="<?php echo esc_attr( 'question-' . $question_id ); ?>" class="answer-slide">
 							<form method="post">
-								<input type="text" placeholder="<?php _e( 'Your answer...', 'product-faq-for-wc' );?>"  name="product_answer" class="field-answer" />
-								<input type="hidden" name="question_id" value="<?php echo $question_id; ?>" />
+								<input type="text" placeholder="<?php esc_attr_e( 'Your answer...', 'product-faq-for-wc' );?>"  name="product_answer" class="field-answer" />
+								<input type="hidden" name="question_id" value="<?php echo esc_attr( $question_id ); ?>" />
 								<input type="submit" name="wc_give_answer" value="Answer" />
 							</form>
 						</div>
 					<?php } ?>
 				</div>
-				<?php
+                <?php
 					$comments = get_approved_comments( $question_id );
-					if ( ! empty( $comments ) ) { ?>
+                    if ( ! empty( $comments ) ) :
+                ?>
 						<ul class="wc-faq-answers">
 							<?php foreach ( $comments as $comment ) { ?>
 								<li class="wc-answers">
-									<span class="answer-symbol"><?php _e( 'A', 'product-faq-for-wc' );?></span>
-									<span class="answer"><?php echo $comment->comment_content;?></span>
+									<span class="answer-symbol"><?php esc_attr_e( 'A', 'product-faq-for-wc' );?></span>
+									<span class="answer"><?php echo esc_html( $comment->comment_content );?></span>
 								</li>
 							<?php } ?>
 						</ul><?php
-					}
+					endif;
 				?>
 			</li>
-		<?php } ?>
-	</ul>
-<?php
+		<?php endwhile; ?>
+	</ul><?php
 
 	/* Restore original Post Data */
 	wp_reset_postdata();
 
-} else {
-	_e( 'Not any questions yet, be the first to ask question ?', 'product-faq-for-wc' );
-}
+else :
+    esc_attr_e( 'Not any questions yet, be the first to ask question ?', 'product-faq-for-wc' );
+endif;
 
 
 if ( is_user_logged_in() ) : ?>
-	<h3><?php _e( 'Ask Question Now!', 'product-faq-for-wc' );?></h3>
+	<h3><?php esc_attr_e( 'Ask Question Now!', 'product-faq-for-wc' );?></h3>
 	<form method="post">
-		<input type="text" placeholder="<?php _e( 'Your question ?', 'product-faq-for-wc' );?>" name="product_question" class="field-question" />
-		<input type="hidden" name="product_id" value="<?php echo $product->id;?>" />
-		<input type="submit" name="wc_ask_question" value="<?php _e( 'Ask Now', 'product-faq-for-wc' );?>" />
+		<input type="text" placeholder="<?php esc_attr_e( 'Your question ?', 'product-faq-for-wc' );?>" name="product_question" class="field-question" />
+		<input type="hidden" name="product_id" value="<?php echo esc_html( $product->id );?>" />
+		<input type="submit" name="wc_ask_question" value="<?php esc_attr_e( 'Ask Now', 'product-faq-for-wc' );?>" />
 	</form><?php
 
 else:
-	_e( 'Please login to to ask questions...... now', 'product-faq-for-wc' );
+    esc_attr_e( 'Please login to to ask questions...... now', 'product-faq-for-wc' );
 endif;
 ?>

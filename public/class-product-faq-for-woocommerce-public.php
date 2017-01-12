@@ -122,7 +122,7 @@ class Product_Faq_For_Woocommerce_Public {
 
 				if ( $terms ) {
 					foreach ( $terms as $term ) {
-						if ( in_array( $term->term_id, $categories ) ) {
+						if ( in_array( $term->term_id, $categories, true ) ) {
 
 							$enable_feature = true;
 							break;
@@ -135,13 +135,13 @@ class Product_Faq_For_Woocommerce_Public {
 
 			if ( $enable_feature ) {
 				// Change tab name which you want
-				$tab_name = apply_filters( 'wc_product_faq_tab_title', 'QA' );
+				$tab_name = apply_filters( 'wc_product_faq_tab_title', __( 'QA', 'product-faq-for-wc' ) );
 
 				// Adds the new tab
 				$tabs['faq_tab'] = array(
-					'title'    => __( $tab_name, 'product-faq-for-wc' ),
+					'title'    => $tab_name,
 					'priority' => 50,
-					'callback' => array( $this, 'faq_tab_content' )
+					'callback' => array( $this, 'faq_tab_content' ),
 				);
 			}
 		}
@@ -173,10 +173,10 @@ class Product_Faq_For_Woocommerce_Public {
 	 * @access public
 	 */
 	public function save_question() {
-		if ( isset( $_POST['wc_ask_question'] ) ) {
-			if ( isset( $_POST['product_question'] ) && isset( $_POST['product_id'] ) ) {
-				$question   = sanitize_text_field( $_POST['product_question'] );
-				$product_id = absint( $_POST['product_id'] );
+		if ( isset( $_POST['wc_ask_question'] ) ) { // Input var okay.
+			if ( isset( $_POST['product_question'] ) && isset( $_POST['product_id'] ) ) { // Input var okay.
+				$question   = sanitize_text_field( wp_unslash( $_POST['product_question'] ) ); // Input var okay.
+				$product_id = absint( $_POST['product_id'] ); // Input var okay.
 
 				// Manage question status which user asked.
 				$question_status = apply_filters( 'wc_product_faq_manage_question_status', 'publish' );
@@ -188,7 +188,7 @@ class Product_Faq_For_Woocommerce_Public {
 					'post_status'  => $question_status,
 					'post_author'  => get_current_user_id(),
 					'post_type'    => $this->post_type,
-					'post_parent'  => $product_id
+					'post_parent'  => $product_id,
 				);
 
 				// Insert the post into the database
@@ -276,7 +276,7 @@ class Product_Faq_For_Woocommerce_Public {
 		$order_ids = $wpdb->get_col( $wpdb->prepare( $order_query, $product_id ) );
 
 		$customers = array();
-		if ( ! empty ( $order_ids ) ) {
+		if ( ! empty( $order_ids ) ) {
 
 			// Manage order status, based on that emails will send.
 			$order_status = apply_filters( 'wc_product_faq_manage_order_status', 'wc-completed' );
@@ -287,11 +287,11 @@ class Product_Faq_For_Woocommerce_Public {
 				if ( $order_status === $order->post_status ) {
 					$order_email = $order->billing_email;
 
-					if ( ! in_array( $order_email, $customers ) ) {
+					if ( ! in_array( $order_email, $customers, true ) ) {
 						$customers[] = array(
 							'email'      => $order_email,
 							'first_name' => $order->billing_first_name,
-							'last_name'  => $order->billing_last_name
+							'last_name'  => $order->billing_last_name,
 						);
 					}
 				}
@@ -345,7 +345,7 @@ class Product_Faq_For_Woocommerce_Public {
 		$sender_name = get_option( 'blogname' );
 		$sender  = get_option( 'wc_product_faq_sender_email' );
 		if ( $sender ) {
-			$headers .= "From: " . $sender_name . " <" . $sender . ">\r\n";
+			$headers .= 'From: ' . $sender_name . ' <' . $sender . '>\r\n';
 		}
 
 		wp_mail( $to, $subject, $message, $headers );
@@ -362,10 +362,10 @@ class Product_Faq_For_Woocommerce_Public {
 	 * @access public
 	 */
 	public function save_answer() {
-		if ( isset( $_POST['wc_give_answer'] ) ) {
-			if ( isset( $_POST['product_answer'] ) && isset( $_POST['question_id'] ) ) {
-				$answer      = sanitize_text_field( $_POST['product_answer'] );
-				$question_id = absint( $_POST['question_id'] );
+		if ( isset( $_POST['wc_give_answer'] ) ) {  // Input var okay.
+			if ( isset( $_POST['product_answer'] ) && isset( $_POST['question_id'] ) ) {  // Input var okay.
+				$answer      = sanitize_text_field( $_POST['product_answer'] );  // Input var okay.
+				$question_id = absint( $_POST['question_id'] );  // Input var okay.
 
 				// Manage answer status which user replied.
 				$answer_status = apply_filters( 'wc_product_faq_manage_answer_status', 0 );
@@ -379,7 +379,7 @@ class Product_Faq_For_Woocommerce_Public {
 					'comment_content'      => $answer,
 					'user_id'              => $current_user->ID,
 					'comment_date'         => date( 'Y-m-d H:i:s' ),
-					'comment_approved'     => $answer_status
+					'comment_approved'     => $answer_status,
 				);
 
 				$comment_id = wp_insert_comment( $data );

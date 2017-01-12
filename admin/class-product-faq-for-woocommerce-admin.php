@@ -78,7 +78,7 @@ class Product_Faq_For_Woocommerce_Admin {
 
 		if ( 'product' === $column_name ) {
 			$product_id = wp_get_post_parent_id( $post_id ); ?>
-			<a href="<?php echo get_the_permalink( $product_id ) ?>">
+			<a href="<?php echo esc_attr( get_the_permalink( $product_id ) ); ?>">
 				<?php echo get_the_title( $product_id ); ?>
 			</a><?php
 		}
