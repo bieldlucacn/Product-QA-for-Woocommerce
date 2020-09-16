@@ -135,7 +135,7 @@ class Product_Faq_For_Woocommerce_Public {
 
 			if ( $enable_feature ) {
 				// Change tab name which you want
-				$tab_name = apply_filters( 'wc_product_faq_tab_title', __( 'QA', 'product-faq-for-wc' ) );
+				$tab_name = apply_filters( 'wc_product_faq_tab_title', __( 'FAQ', 'product-faq-for-wc' ) );
 
 				// Adds the new tab
 				$tabs['faq_tab'] = array(

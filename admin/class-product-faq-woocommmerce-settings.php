@@ -49,7 +49,7 @@ class Product_Faq_For_Woocommmerce_Settings {
 	 */
 	public function section( $sections ) {
 
-		$sections['product_faq'] = __( 'Product QA', 'product-faq-for-wc' );
+		$sections['product_faq'] = __( 'Products FAQ', 'product-faq-for-wc' );
 		return $sections;
 	}
 
@@ -100,7 +100,7 @@ class Product_Faq_For_Woocommmerce_Settings {
 			// Multi select
 			$settings[] = array(
 				'name' => __( 'Select Categories', 'product-faq-for-wc' ),
-				'desc_tip' => __( 'Multi-select categories, products with selected categories have QA feature. 
+				'desc_tip' => __( 'Multi-select categories, products with selected categories have QA feature.
 									(Note : Empty selection, enables QA feature for all products.)', 'product-faq-for-wc' ),
 				'id' => 'wc_product_faq_category_list',
 				'type' => 'multiselect',

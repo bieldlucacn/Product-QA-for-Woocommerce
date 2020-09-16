@@ -13,7 +13,7 @@
  */
 ?>
 
-<h2><?php esc_attr_e( 'Question Answers', 'product-faq-for-wc' );?></h2>
+<h2><?php esc_attr_e( 'Questions and Answers', 'product-faq-for-wc' );?></h2>
 
 <?php
 
@@ -82,19 +82,19 @@ if ( $question_query->have_posts() ) :
 	wp_reset_postdata();
 
 else :
-    esc_attr_e( 'Not any questions yet, be the first to ask question ?', 'product-faq-for-wc' );
+    esc_attr_e( 'Not any questions yet, be the first to ask a question!', 'product-faq-for-wc' );
 endif;
 
 
 if ( is_user_logged_in() ) : ?>
 	<h3><?php esc_attr_e( 'Ask Question Now!', 'product-faq-for-wc' );?></h3>
 	<form method="post">
-		<input type="text" placeholder="<?php esc_attr_e( 'Your question ?', 'product-faq-for-wc' );?>" name="product_question" class="field-question" />
+		<input type="text" placeholder="<?php esc_attr_e( 'Your question?', 'product-faq-for-wc' );?>" name="product_question" class="field-question" />
 		<input type="hidden" name="product_id" value="<?php echo esc_html( $product->id );?>" />
 		<input type="submit" name="wc_ask_question" value="<?php esc_attr_e( 'Ask Now', 'product-faq-for-wc' );?>" />
 	</form><?php
 
 else:
-    esc_attr_e( 'Please login to to ask questions...... now', 'product-faq-for-wc' );
+    esc_attr_e( 'Please login to to ask questions...', 'product-faq-for-wc' );
 endif;
 ?>

@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       Product QA For Woocommerce
  * Plugin URI:        http://profiles.wordpress.org/vishalkakadiya/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       This plugin enables a Q&A feature on the product details tabs
+ * Version:           1.0.1
  * Author:            Vishal Kakadiya
  * Author URI:        http://profiles.wordpress.org/vishalkakadiya/
  * License:           GPL-2.0+
